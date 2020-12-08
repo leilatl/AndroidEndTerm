@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.endterm1.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/navigateToDetail"
+            app:destination="@id/postFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.endterm1.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/navigateToComment"
+            app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/navigateFromPostToList"
+            app:destination="@id/listFragment"/>
+        <argument
+            android:name="passedId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.endterm1.CommentFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_comment" >
+        <action
+            android:id="@+id/navigateFromCommentToList"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="passedIdPost"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+</navigation>
